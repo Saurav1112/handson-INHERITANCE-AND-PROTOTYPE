@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS HANDSON 14</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1> INHERITANCE AND PROTOTYPE</h1>
+<hr>
+    <div id="Q"> Q1.Create 2 objects - parent and child. Attach methods to parent and use those methods in child object 
+        using parents prototype</div>
+    <div>→ 
+        <pre>
+            const parent ={
+                firstname : "Saurav",
+                lastname : "Chaudhary",
+                fullname : function title(){
+                    console.log(this.firstname+" "+this.lastname);
+                }
+            }
+            
+            const child ={
+                _proto_: parent
+            }
+            child.fullname();
+        </pre>
+    </div>
+
+    <div id="Reason"> Explanation →  First an object was created and two keys were passed as firstname and lastname
+        with their respected values. After that the function was called to store the parent value. And at last with the 
+        help of _proto_ keyword the parent was targeted. and consoled at last.
+    </div>
+<hr>
+
+<div id="Q">Q2.Write code to explain prototype chaining</div>
+<div>
+    <pre>
+        let obj={
+            name : "Saurav"
+        }
+        
+        let obj1 ={
+            _proto_: obj,
+            lastname : "Chaudhary"
+        }
+        
+        let obj2 = {
+            _proto_: obj1,
+            age :   "24",
+        }
+        
+        console.log(obj.name)
+        
+    </pre>
+</div>
+ <div id="Reason">  Explanation → Here three objects were made by using object literal method, and 
+    chaining was made by using proto keyword, and last obj was called which was obtained through chaining.
+ </div>
+ <hr>
+
+ <div id="Q">Q3.Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</div>
+<div>
+    <pre>
+        Array.prototype.sum = function() {
+            let result = 0;
+            for (let i = 0; i &lt; this.length; i++) {
+              result += this[i];
+            }
+            return result;
+          };
+        
+        let N1 = [1, 2, 3];
+        let N2 = [3, 2, 1];
+        
+        
+        let addition = N1.sum() + N2.sum()
+        console.log(addition);
+        
+    </pre>
+</div>
+ <div id="Reason">  Explanation → Array.prototype targets the parent element where we have assigned the sum function and 
+    stored it as a object, where we have made a for loop to intiate a sum function. Later on we the help of array 
+    we stored values to be summed and the result is stored in the addition variable,where the output is consoled
+    with the addition variable.
+ </div>
+ <hr>
+
+ <div id="Q">Q4.Write a JavaScript function to retrieve all the names of object's own and inherited properties.</div>
+<div>
+    <pre>
+        class student {
+            constructor(name, rollno, division){
+                this.name= name;
+                this.rollno= rollno;
+                this.division = division; 
+            }
+        
+            set setFriend(friend){
+                this.friend= friend
+            }
+        }
+        
+        let obj = new student("Saurav", "37","B")
+        obj.friend="Harman"
+        console.log(obj)
+        
+        class senior extends student{
+             constructor(){
+                super("Pankaj", "40", "C")
+             }
+        }
+         let seniorobj = new senior();
+         console.log(seniorobj)
+    </pre>
+</div>
+ <div id="Reason">  Explanation → At first we created a class using object constructor function and respected
+    parameters were passed and After that it was consoled, to retrieve the other name a new class was created
+    with the help of extends keyword, and now to retrieve or recaccess the first constructor, the super function 
+    was used.
+ </div>
+ <hr>
+
+
+ <script src="./index.js"></script>
+</body>
+</html>
